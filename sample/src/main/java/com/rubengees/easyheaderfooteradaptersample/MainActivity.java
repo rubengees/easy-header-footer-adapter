@@ -76,18 +76,18 @@ public class MainActivity extends AppCompatActivity {
             case LayoutManager.LINEAR:
                 menu.findItem(R.id.linear_layout_manager).setChecked(true);
 
-                break;
+                return true;
             case LayoutManager.GRID:
                 menu.findItem(R.id.grid_layout_manager).setChecked(true);
 
-                break;
+                return true;
             case LayoutManager.STAGGERED_GRID:
                 menu.findItem(R.id.staggered_grid_layout_manager).setChecked(true);
 
-                break;
+                return true;
+            default:
+                return true;
         }
-
-        return true;
     }
 
     @Override
@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 refreshRecycler();
                 return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

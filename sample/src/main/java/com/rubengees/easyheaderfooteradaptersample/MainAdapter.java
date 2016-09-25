@@ -110,7 +110,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private TextView textView;
 
-        public TextViewHolder(View itemView) {
+        TextViewHolder(View itemView) {
             super(itemView);
 
             textView = (TextView) itemView.findViewById(R.id.text);
@@ -134,7 +134,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private View colorContainer;
 
-        public ColorViewHolder(View itemView) {
+        ColorViewHolder(View itemView) {
             super(itemView);
 
             colorContainer = itemView.findViewById(R.id.colorContainer);
