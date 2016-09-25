@@ -1,0 +1,32 @@
+buildscript {
+    ext.support_version = '24.2.1'
+    ext.build_tools_version = '24.0.2'
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+project.ext.preDexLibs = !project.hasProperty('disablePreDex')
+
+subprojects {
+    project.plugins.whenPluginAdded { plugin ->
+        if ("com.android.build.gradle.AppPlugin".equals(plugin.class.name)) {
+            project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
+        } else if ("com.android.build.gradle.LibraryPlugin".equals(plugin.class.name)) {
+            project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
+        }
+    }
+}

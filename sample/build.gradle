@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "$build_tools_version"
+
+    defaultConfig {
+        applicationId "com.rubengees.easyheaderfooteradaptersample"
+        minSdkVersion 9
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile "com.android.support:appcompat-v7:$support_version"
+
+    compile project(':library')
+}
