@@ -114,6 +114,7 @@ You can find the JavaDoc [here](https://jitpack.io/com/github/rubengees/EasyHead
 ### Metrics
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f4d420e243c145c88ceac22b86f819eb)](https://www.codacy.com/app/geesruben/EasyHeaderFooterAdapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rubengees/EasyHeaderFooterAdapter&amp;utm_campaign=Badge_Grade)  
+<a href="http://www.methodscount.com/?lib=com.github.rubengees%3AEasyHeaderFooterAdapter%3A%2B"><img src="https://img.shields.io/badge/Methods and size-core: 73 | deps: 9347 | 8 KB-e91e63.svg"/></a>
 
 ### Contributions and contributors
 
