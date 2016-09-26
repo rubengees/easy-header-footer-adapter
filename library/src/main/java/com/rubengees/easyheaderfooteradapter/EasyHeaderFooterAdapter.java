@@ -75,6 +75,14 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
 
+        if (header != null && header.getParent() != null) {
+            ((ViewGroup) header.getParent()).removeView(header);
+        }
+
+        if (footer != null && footer.getParent() != null) {
+            ((ViewGroup) footer.getParent()).removeView(footer);
+        }
+
         layoutManager = recyclerView.getLayoutManager();
 
         initLayoutManager();
@@ -286,10 +294,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     private void bind(HeaderFooterViewHolder holder, int position) {
         View viewToAdd = isHeader(position) ? header : footer;
 
-        if (viewToAdd.getParent() != null) {
-            ((ViewGroup) viewToAdd.getParent()).removeView(viewToAdd);
-        }
-
+        ((ViewGroup) holder.itemView).removeAllViews();
         ((ViewGroup) holder.itemView).addView(viewToAdd);
 
         ViewGroup.LayoutParams layoutParams;
