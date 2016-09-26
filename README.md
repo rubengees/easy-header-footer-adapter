@@ -4,7 +4,7 @@ Add a header and/or footer to your `RecyclerView` - the easy way.
 
 ![Sample](art/sample.gif)
 
-You can download the latest sample app [here](https://github.com/rubengees/EasyHeaderFooterAdapter/releases/download/1.0.0/sample-release.apk).
+You can download the latest sample app [here](https://github.com/rubengees/EasyHeaderFooterAdapter/releases/download/1.0.1/sample-release.apk).
 
 ### Features
 
@@ -28,7 +28,7 @@ And this to your module `build.gradle` (usually in the `app` directory):
 
 ```groovy
 dependencies {
-    compile 'com.github.rubengees:EasyHeaderFooterAdapter:1.0.0@aar'
+    compile 'com.github.rubengees:EasyHeaderFooterAdapter:1.0.1@aar'
 }
 ```
 
@@ -109,7 +109,7 @@ recycler.setAdapter(headerFooterAdapter);
 ### Further reading
 
 The sample features almost all use cases. Have a look [here](sample/src/main/java/com/rubengees/easyheaderfooteradaptersample).  
-You can find the JavaDoc [here](https://jitpack.io/com/github/rubengees/EasyHeaderFooterAdapter/1.0.0/javadoc/).
+You can find the JavaDoc [here](https://jitpack.io/com/github/rubengees/EasyHeaderFooterAdapter/1.0.1/javadoc/).
 
 ### Metrics
 
