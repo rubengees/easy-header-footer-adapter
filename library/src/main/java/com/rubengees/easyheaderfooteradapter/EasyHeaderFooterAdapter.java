@@ -261,7 +261,6 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         return position + (hasHeader() ? 1 : 0);
     }
 
-
     private int getFooterPosition() {
         return innerAdapter.getItemCount() + (hasHeader() ? 1 : 0);
     }
@@ -278,7 +277,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
                         return castedLayoutManager.getSpanCount();
                     }
 
-                    return existingLookup.getSpanSize(position);
+                    return existingLookup.getSpanSize(getRealPosition(position));
                 }
             });
         }
