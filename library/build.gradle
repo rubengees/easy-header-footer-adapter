@@ -17,6 +17,7 @@ android {
 
 dependencies {
     compile "com.android.support:recyclerview-v7:$support_version"
+    compile "com.android.support:support-annotations:$support_version"
 }
 
 task sourcesJar(type: Jar) {
