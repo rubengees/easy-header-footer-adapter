@@ -4,6 +4,8 @@ Add a header and/or footer to your `RecyclerView` - the easy way.
 
 ![Sample](art/sample.gif)
 
+You can download the latest sample app [here](https://github.com/rubengees/EasyHeaderFooterAdapter/releases/download/1.0.0/sample-release.apk).
+
 ### Features
 
 - Completely hassle-free. You don't have to change your existing implementation.
