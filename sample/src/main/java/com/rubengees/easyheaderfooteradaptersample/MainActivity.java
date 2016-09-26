@@ -26,6 +26,8 @@ import com.rubengees.easyheaderfooteradaptersample.LayoutManager.LayoutManagerTy
 public class MainActivity extends AppCompatActivity {
 
     private static final String LAYOUT_MANAGER_TYPE_STATE = "layout_manager_type_state";
+    private static final String HEADER_STATE = "header_state";
+    private static final String FOOTER_STATE = "footer_state";
 
     private RecyclerView recycler;
     private MainAdapter adapter;
@@ -64,8 +66,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addRandomItems();
+        if (savedInstanceState == null) {
+            addRandomItems();
+        }
+
         refreshRecycler();
+
+        if (savedInstanceState != null) {
+            if (savedInstanceState.getBoolean(HEADER_STATE)) {
+                setHeader();
+            }
+
+            if (savedInstanceState.getBoolean(FOOTER_STATE)) {
+                setFooter();
+            }
+        }
     }
 
     @Override
@@ -145,6 +160,8 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         outState.putInt(LAYOUT_MANAGER_TYPE_STATE, layoutManagerType);
+        outState.putBoolean(HEADER_STATE, headerFooterAdapter.hasHeader());
+        outState.putBoolean(FOOTER_STATE, headerFooterAdapter.hasFooter());
         adapter.saveInstanceState(outState);
     }
 
