@@ -194,6 +194,10 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      * @param header The header.
      */
     public void setHeader(@Nullable View header) {
+        if (this.header == header) {
+            return;
+        }
+
         boolean hadHeader = this.header != null;
 
         if (hadHeader) {
@@ -203,9 +207,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         this.header = header;
 
         if (header == null) {
-            if (hadHeader) {
-                notifyItemRemoved(0);
-            }
+            notifyItemRemoved(0);
         } else {
             if (hadHeader) {
                 notifyItemChanged(0);
@@ -221,6 +223,10 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      * @param footer The footer.
      */
     public void setFooter(@Nullable View footer) {
+        if (this.footer == footer) {
+            return;
+        }
+
         boolean hadFooter = this.footer != null;
 
         if (hadFooter) {
@@ -230,9 +236,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         this.footer = footer;
 
         if (footer == null) {
-            if (hadFooter) {
-                notifyItemRemoved(getFooterPosition());
-            }
+            notifyItemRemoved(getFooterPosition());
         } else {
             if (hadFooter) {
                 notifyItemChanged(getFooterPosition());
