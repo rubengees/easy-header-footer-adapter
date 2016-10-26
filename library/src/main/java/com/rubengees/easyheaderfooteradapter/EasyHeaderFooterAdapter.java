@@ -201,7 +201,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         boolean hadHeader = this.header != null;
 
         if (hadHeader) {
-            ((ViewGroup) this.header.getParent()).removeAllViews();
+            detachFromParent(this.header);
         }
 
         this.header = header;
@@ -230,7 +230,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         boolean hadFooter = this.footer != null;
 
         if (hadFooter) {
-            ((ViewGroup) this.footer.getParent()).removeAllViews();
+            detachFromParent(this.footer);
         }
 
         this.footer = footer;
@@ -342,6 +342,14 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         holder.itemView.setLayoutParams(layoutParams);
+    }
+
+    private void detachFromParent(@NonNull View view) {
+        ViewGroup parent = (ViewGroup) this.header.getParent();
+
+        if (parent != null) {
+            parent.removeView(view);
+        }
     }
 
     private static class HeaderFooterViewHolder extends RecyclerView.ViewHolder {
