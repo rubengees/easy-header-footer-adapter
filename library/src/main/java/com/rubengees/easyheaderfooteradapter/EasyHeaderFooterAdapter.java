@@ -345,7 +345,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     private void detachFromParent(@NonNull View view) {
-        ViewGroup parent = (ViewGroup) this.header.getParent();
+        ViewGroup parent = (ViewGroup) view.getParent();
 
         if (parent != null) {
             parent.removeView(view);
