@@ -195,6 +195,11 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      */
     public void setHeader(@Nullable View header) {
         boolean hadHeader = this.header != null;
+
+        if (hadHeader) {
+            ((ViewGroup) this.header.getParent()).removeAllViews();
+        }
+
         this.header = header;
 
         if (header == null) {
@@ -217,6 +222,11 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      */
     public void setFooter(@Nullable View footer) {
         boolean hadFooter = this.footer != null;
+
+        if (hadFooter) {
+            ((ViewGroup) this.footer.getParent()).removeAllViews();
+        }
+
         this.footer = footer;
 
         if (footer == null) {
