@@ -8,7 +8,7 @@
     <string name="library_easyheaderfooteradapter_libraryName">EasyHeaderFooterAdapter</string>
     <string name="library_easyheaderfooteradapter_libraryDescription">Add a header and/or footer to your RecyclerView - the easy way.</string>
     <string name="library_easyheaderfooteradapter_libraryWebsite">https://github.com/rubengees/EasyHeaderFooterAdapter</string>
-    <string name="library_easyheaderfooteradapter_libraryVersion">1.0.3</string>
+    <string name="library_easyheaderfooteradapter_libraryVersion">1.0.4</string>
     <!-- OpenSource section -->
     <string name="library_easyheaderfooteradapter_isOpenSource">true</string>
     <string name="library_easyheaderfooteradapter_repositoryLink">https://github.com/rubengees/EasyHeaderFooterAdapter</string>
