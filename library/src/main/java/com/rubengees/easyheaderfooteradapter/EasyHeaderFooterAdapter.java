@@ -189,6 +189,16 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     /**
+     * Returns the header or null if none is set.
+     *
+     * @return The header.
+     */
+    @Nullable
+    public View getHeader() {
+        return header;
+    }
+
+    /**
      * Sets the header (replaces if there was already one) and notifies the appropriate listeners.
      *
      * @param header The header.
@@ -215,6 +225,16 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
                 notifyItemInserted(0);
             }
         }
+    }
+
+    /**
+     * Returns the footer or null if none is set.
+     *
+     * @return The footer.
+     */
+    @Nullable
+    public View getFooter() {
+        return footer;
     }
 
     /**
