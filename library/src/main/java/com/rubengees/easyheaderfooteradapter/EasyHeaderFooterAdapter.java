@@ -83,9 +83,16 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
             ((ViewGroup) footer.getParent()).removeView(footer);
         }
 
-        layoutManager = recyclerView.getLayoutManager();
+        initLayoutManager(layoutManager);
 
-        initLayoutManager();
+        innerAdapter.onAttachedToRecyclerView(recyclerView);
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        innerAdapter.onDetachedFromRecyclerView(recyclerView);
+
+        super.onDetachedFromRecyclerView(recyclerView);
     }
 
     @Override
@@ -307,7 +314,9 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         return innerAdapter.getItemCount() + (hasHeader() ? 1 : 0);
     }
 
-    private void initLayoutManager() {
+    private void initLayoutManager(RecyclerView.LayoutManager layoutManager) {
+        this.layoutManager = layoutManager;
+
         if (layoutManager instanceof GridLayoutManager) {
             final GridLayoutManager castedLayoutManager = (GridLayoutManager) layoutManager;
             final SpanSizeLookup existingLookup = castedLayoutManager.getSpanSizeLookup();
