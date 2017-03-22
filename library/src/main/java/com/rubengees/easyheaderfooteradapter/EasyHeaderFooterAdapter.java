@@ -83,7 +83,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
             ((ViewGroup) footer.getParent()).removeView(footer);
         }
 
-        initLayoutManager(layoutManager);
+        initLayoutManager(recyclerView.getLayoutManager());
 
         innerAdapter.onAttachedToRecyclerView(recyclerView);
     }
