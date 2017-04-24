@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "$build_tools_version"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.rubengees.easyheaderfooteradaptersample"
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 6
-        versionName "1.0.5"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.version
     }
 
     buildTypes {
@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$support_version"
+    compile deps.supportAppCompat
 
     compile project(':library')
 }

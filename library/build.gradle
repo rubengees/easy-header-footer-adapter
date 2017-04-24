@@ -4,20 +4,20 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.rubengees'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "$build_tools_version"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 6
-        versionName "1.0.5"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.version
     }
 }
 
 dependencies {
-    compile "com.android.support:recyclerview-v7:$support_version"
-    compile "com.android.support:support-annotations:$support_version"
+    compile deps.supportRecyclerView
+    compile deps.supportAnnotations
 }
 
 task sourcesJar(type: Jar) {
