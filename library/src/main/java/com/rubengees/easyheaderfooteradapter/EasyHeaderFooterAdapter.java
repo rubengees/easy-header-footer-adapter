@@ -96,6 +96,22 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
+    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+
+        //noinspection unchecked
+        innerAdapter.onViewAttachedToWindow(holder);
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
+        //noinspection unchecked
+        innerAdapter.onViewDetachedFromWindow(holder);
+
+        super.onViewDetachedFromWindow(holder);
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_HEADER || viewType == TYPE_FOOTER) {
             return new HeaderFooterViewHolder(LayoutInflater.from(parent.getContext())
