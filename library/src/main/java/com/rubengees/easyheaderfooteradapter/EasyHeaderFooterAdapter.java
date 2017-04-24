@@ -99,14 +99,18 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
         super.onViewAttachedToWindow(holder);
 
-        //noinspection unchecked
-        innerAdapter.onViewAttachedToWindow(holder);
+        if (!(holder instanceof HeaderFooterViewHolder)) {
+            //noinspection unchecked
+            innerAdapter.onViewAttachedToWindow(holder);
+        }
     }
 
     @Override
     public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
-        //noinspection unchecked
-        innerAdapter.onViewDetachedFromWindow(holder);
+        if (!(holder instanceof HeaderFooterViewHolder)) {
+            //noinspection unchecked
+            innerAdapter.onViewDetachedFromWindow(holder);
+        }
 
         super.onViewDetachedFromWindow(holder);
     }
@@ -398,7 +402,6 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     private static class HeaderFooterViewHolder extends RecyclerView.ViewHolder {
-
         HeaderFooterViewHolder(View itemView) {
             super(itemView);
         }
