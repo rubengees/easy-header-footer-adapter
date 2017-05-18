@@ -73,8 +73,6 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-
         if (header != null && header.getParent() != null) {
             ((ViewGroup) header.getParent()).removeView(header);
         }
@@ -91,14 +89,10 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
         innerAdapter.onDetachedFromRecyclerView(recyclerView);
-
-        super.onDetachedFromRecyclerView(recyclerView);
     }
 
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-
         if (!(holder instanceof HeaderFooterViewHolder)) {
             //noinspection unchecked
             innerAdapter.onViewAttachedToWindow(holder);
@@ -111,8 +105,24 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
             //noinspection unchecked
             innerAdapter.onViewDetachedFromWindow(holder);
         }
+    }
 
-        super.onViewDetachedFromWindow(holder);
+    @Override
+    public void onViewRecycled(RecyclerView.ViewHolder holder) {
+        if (!(holder instanceof HeaderFooterViewHolder)) {
+            //noinspection unchecked
+            innerAdapter.onViewRecycled(holder);
+        }
+    }
+
+    @Override
+    public boolean onFailedToRecycleView(RecyclerView.ViewHolder holder) {
+        if (!(holder instanceof HeaderFooterViewHolder)) {
+            //noinspection unchecked
+            return innerAdapter.onFailedToRecycleView(holder);
+        }
+
+        return super.onFailedToRecycleView(holder);
     }
 
     @Override
