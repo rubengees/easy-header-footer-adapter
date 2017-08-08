@@ -150,7 +150,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        return innerAdapter.getItemCount() + (hasHeader() ? 1 : 0) + (hasFooter() ? 1 : 0);
+        return innerAdapter.getItemCount() + (header != null ? 1 : 0) + (footer != null ? 1 : 0);
     }
 
     @Override
@@ -173,26 +173,6 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         } else {
             return innerAdapter.getItemId(getRealPosition(position));
         }
-    }
-
-    /**
-     * Returns if a header is currently set.
-     *
-     * @return True if a header is set.
-     */
-    @SuppressWarnings("WeakerAccess")
-    public boolean hasHeader() {
-        return header != null;
-    }
-
-    /**
-     * Returns if a footer is currently set.
-     *
-     * @return True if a footer is set.
-     */
-    @SuppressWarnings("WeakerAccess")
-    public boolean hasFooter() {
-        return footer != null;
     }
 
     /**
@@ -222,6 +202,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      *
      * @return The header.
      */
+    @SuppressWarnings("unused")
     @Nullable
     public View getHeader() {
         return header;
@@ -259,6 +240,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      *
      * @return The footer.
      */
+    @SuppressWarnings("unused")
     @Nullable
     public View getFooter() {
         return footer;
@@ -294,6 +276,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      *
      * @return The inner adapter.
      */
+    @SuppressWarnings("unused")
     public RecyclerView.Adapter getInnerAdapter() {
         return innerAdapter;
     }
@@ -305,15 +288,15 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      * @return The real position.
      */
     public int getRealPosition(final int position) {
-        return position - (hasHeader() ? 1 : 0);
+        return position - (header != null ? 1 : 0);
     }
 
     private int getDelegatedPosition(final int position) {
-        return position + (hasHeader() ? 1 : 0);
+        return position + (header != null ? 1 : 0);
     }
 
     private int getFooterPosition() {
-        return innerAdapter.getItemCount() + (hasHeader() ? 1 : 0);
+        return innerAdapter.getItemCount() + (header != null ? 1 : 0);
     }
 
     private void initLayoutManager(final RecyclerView.LayoutManager layoutManager) {
