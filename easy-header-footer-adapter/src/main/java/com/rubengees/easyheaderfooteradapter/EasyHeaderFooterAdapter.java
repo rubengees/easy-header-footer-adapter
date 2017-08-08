@@ -37,10 +37,10 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      *
      * @param innerAdapter The adapter to wrap.
      */
-    public EasyHeaderFooterAdapter(@NonNull RecyclerView.Adapter innerAdapter) {
+    public EasyHeaderFooterAdapter(@NonNull final RecyclerView.Adapter innerAdapter) {
         this.innerAdapter = innerAdapter;
 
-        this.innerAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+        innerAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             public void onChanged() {
                 notifyDataSetChanged();
             }
@@ -72,27 +72,19 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        if (header != null && header.getParent() != null) {
-            ((ViewGroup) header.getParent()).removeView(header);
-        }
-
-        if (footer != null && footer.getParent() != null) {
-            ((ViewGroup) footer.getParent()).removeView(footer);
-        }
-
+    public void onAttachedToRecyclerView(final RecyclerView recyclerView) {
         initLayoutManager(recyclerView.getLayoutManager());
 
         innerAdapter.onAttachedToRecyclerView(recyclerView);
     }
 
     @Override
-    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+    public void onDetachedFromRecyclerView(final RecyclerView recyclerView) {
         innerAdapter.onDetachedFromRecyclerView(recyclerView);
     }
 
     @Override
-    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+    public void onViewAttachedToWindow(final RecyclerView.ViewHolder holder) {
         if (!(holder instanceof HeaderFooterViewHolder)) {
             //noinspection unchecked
             innerAdapter.onViewAttachedToWindow(holder);
@@ -100,7 +92,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
+    public void onViewDetachedFromWindow(final RecyclerView.ViewHolder holder) {
         if (!(holder instanceof HeaderFooterViewHolder)) {
             //noinspection unchecked
             innerAdapter.onViewDetachedFromWindow(holder);
@@ -108,7 +100,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onViewRecycled(RecyclerView.ViewHolder holder) {
+    public void onViewRecycled(final RecyclerView.ViewHolder holder) {
         if (!(holder instanceof HeaderFooterViewHolder)) {
             //noinspection unchecked
             innerAdapter.onViewRecycled(holder);
@@ -116,7 +108,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public boolean onFailedToRecycleView(RecyclerView.ViewHolder holder) {
+    public boolean onFailedToRecycleView(final RecyclerView.ViewHolder holder) {
         if (!(holder instanceof HeaderFooterViewHolder)) {
             //noinspection unchecked
             return innerAdapter.onFailedToRecycleView(holder);
@@ -126,7 +118,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         if (viewType == TYPE_HEADER || viewType == TYPE_FOOTER) {
             return new HeaderFooterViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.easy_header_footer_adapter_item, parent, false));
@@ -136,8 +128,8 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position,
-                                 List<Object> payloads) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position,
+                                 final List<Object> payloads) {
         if (holder instanceof HeaderFooterViewHolder) {
             bind((HeaderFooterViewHolder) holder, position);
         } else {
@@ -147,7 +139,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof HeaderFooterViewHolder) {
             bind((HeaderFooterViewHolder) holder, position);
         } else {
@@ -162,7 +154,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public int getItemViewType(int position) {
+    public int getItemViewType(final int position) {
         if (isHeader(position)) {
             return TYPE_HEADER;
         } else if (isFooter(position)) {
@@ -173,7 +165,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         if (isHeader(position)) {
             return ID_HEADER;
         } else if (isFooter(position)) {
@@ -210,7 +202,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      * @return True if a header is at the position.
      */
     @SuppressWarnings("WeakerAccess")
-    public boolean isHeader(int position) {
+    public boolean isHeader(final int position) {
         return header != null && position == 0;
     }
 
@@ -221,7 +213,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      * @return True if a footer is at the position.
      */
     @SuppressWarnings("WeakerAccess")
-    public boolean isFooter(int position) {
+    public boolean isFooter(final int position) {
         return footer != null && position == getFooterPosition();
     }
 
@@ -240,22 +232,20 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      *
      * @param header The header.
      */
-    public void setHeader(@Nullable View header) {
+    public void setHeader(@Nullable final View header) {
         if (this.header == header) {
             return;
         }
 
-        boolean hadHeader = this.header != null;
-
-        if (hadHeader) {
-            detachFromParent(this.header);
-        }
+        final boolean hadHeader = this.header != null;
 
         this.header = header;
 
         if (header == null) {
             notifyItemRemoved(0);
         } else {
+            detachFromParent(header);
+
             if (hadHeader) {
                 notifyItemChanged(0);
             } else {
@@ -279,16 +269,12 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      *
      * @param footer The footer.
      */
-    public void setFooter(@Nullable View footer) {
+    public void setFooter(@Nullable final View footer) {
         if (this.footer == footer) {
             return;
         }
 
-        boolean hadFooter = this.footer != null;
-
-        if (hadFooter) {
-            detachFromParent(this.footer);
-        }
+        final boolean hadFooter = this.footer != null;
 
         this.footer = footer;
 
@@ -301,20 +287,6 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
                 notifyItemInserted(getFooterPosition());
             }
         }
-    }
-
-    /**
-     * Removes the header and notifies the appropriate listeners if present.
-     */
-    public void removeHeader() {
-        setHeader(null);
-    }
-
-    /**
-     * Removes the footer and notifies the appropriate listeners if present.
-     */
-    public void removeFooter() {
-        setFooter(null);
     }
 
     /**
@@ -332,11 +304,11 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
      * @param position The raw position.
      * @return The real position.
      */
-    public int getRealPosition(int position) {
+    public int getRealPosition(final int position) {
         return position - (hasHeader() ? 1 : 0);
     }
 
-    private int getDelegatedPosition(int position) {
+    private int getDelegatedPosition(final int position) {
         return position + (hasHeader() ? 1 : 0);
     }
 
@@ -344,7 +316,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         return innerAdapter.getItemCount() + (hasHeader() ? 1 : 0);
     }
 
-    private void initLayoutManager(RecyclerView.LayoutManager layoutManager) {
+    private void initLayoutManager(final RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
 
         if (layoutManager instanceof GridLayoutManager) {
@@ -364,13 +336,22 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
     }
 
-    private void bind(HeaderFooterViewHolder holder, int position) {
-        View viewToAdd = isHeader(position) ? header : footer;
+    private void bind(final HeaderFooterViewHolder holder, final int position) {
+        final ViewGroup holderItemView = (ViewGroup) holder.itemView;
+        final ViewGroup.LayoutParams layoutParams;
+        final View viewToAdd;
 
-        ((ViewGroup) holder.itemView).removeAllViews();
-        ((ViewGroup) holder.itemView).addView(viewToAdd);
+        if (isHeader(position)) {
+            viewToAdd = header;
+        } else if (isFooter(position)) {
+            viewToAdd = footer;
+        } else {
+            return;
+        }
 
-        ViewGroup.LayoutParams layoutParams;
+        detachFromParent(viewToAdd);
+        holderItemView.removeAllViews();
+        holderItemView.addView(viewToAdd);
 
         if (layoutManager instanceof StaggeredGridLayoutManager) {
             if (viewToAdd.getLayoutParams() == null) {
@@ -403,8 +384,8 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
         holder.itemView.setLayoutParams(layoutParams);
     }
 
-    private void detachFromParent(@NonNull View view) {
-        ViewGroup parent = (ViewGroup) view.getParent();
+    private void detachFromParent(@NonNull final View view) {
+        final ViewGroup parent = (ViewGroup) view.getParent();
 
         if (parent != null) {
             parent.removeView(view);
@@ -412,7 +393,7 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     private static class HeaderFooterViewHolder extends RecyclerView.ViewHolder {
-        HeaderFooterViewHolder(View itemView) {
+        HeaderFooterViewHolder(final View itemView) {
             super(itemView);
         }
     }

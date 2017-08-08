@@ -1,4 +1,4 @@
-package com.rubengees.easyheaderfooteradaptersample;
+package com.rubengees.easyheaderfooteradapter.sample;
 
 import android.support.annotation.IntDef;
 

@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile deps.supportAppCompat
+    implementation deps.supportAppCompat
 
-    compile project(':easy-header-footer-adapter')
+    implementation project(':easy-header-footer-adapter')
 }

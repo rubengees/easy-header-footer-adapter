@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <array name="colors">
         <item name="red_50" type="color">#fde0dc</item>
         <item name="red_100" type="color">#f9bdbb</item>

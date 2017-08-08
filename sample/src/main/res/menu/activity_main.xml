@@ -4,41 +4,41 @@
 
     <item
         android:id="@+id/add_item"
-        android:title="Add item"
+        android:title="@string/add_item"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/remove_item"
-        android:title="Remove item"
+        android:title="@string/remove_item"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/set_header"
-        android:title="Set header"
+        android:title="@string/set_header"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/set_footer"
-        android:title="Set footer"
+        android:title="@string/set_footer"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/remove_header"
-        android:title="Remove header"
+        android:title="@string/remove_header"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/remove_footer"
-        android:title="Remove footer"
+        android:title="@string/remove_footer"
         app:showAsAction="ifRoom" />
 
-    <item android:title="LayoutManager">
+    <item android:title="@string/layout_manager_title">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/linear_layout_manager"
-                    android:title="Linear" />
+                    android:title="@string/layout_manager_linear" />
                 <item
                     android:id="@+id/grid_layout_manager"
-                    android:title="Grid" />
+                    android:title="@string/layout_manager_grid" />
                 <item
                     android:id="@+id/staggered_grid_layout_manager"
-                    android:title="StaggeredGrid" />
+                    android:title="@string/layout_manager_staggeredgrid" />
             </group>
         </menu>
     </item>

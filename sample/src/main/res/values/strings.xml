@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">EasyHeaderFooterAdapterSample</string>
+
+    <string name="add_item">Add item</string>
+    <string name="remove_item">Remove item</string>
+    <string name="set_header">Set header</string>
+    <string name="set_footer">Set footer</string>
+    <string name="remove_header">Remove header</string>
+    <string name="remove_footer">Remove footer</string>
+
+    <string name="layout_manager_title">LayoutManager</string>
+    <string name="layout_manager_linear">Linear</string>
+    <string name="layout_manager_grid">Grid</string>
+    <string name="layout_manager_staggeredgrid">StaggeredGrid</string>
+
+    <string name="header_title">This is the header</string>
+    <string name="footer_title">This is the footer</string>
 </resources>

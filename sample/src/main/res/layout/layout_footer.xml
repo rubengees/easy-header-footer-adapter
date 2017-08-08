@@ -5,5 +5,5 @@
     android:layout_margin="24dp"
     android:foreground="?attr/selectableItemBackground"
     android:gravity="center"
-    android:text="This is the footer"
+    android:text="@string/footer_title"
     android:textAppearance="@style/TextAppearance.AppCompat.Large" />

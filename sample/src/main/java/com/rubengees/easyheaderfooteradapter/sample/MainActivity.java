@@ -1,4 +1,4 @@
-package com.rubengees.easyheaderfooteradaptersample;
+package com.rubengees.easyheaderfooteradapter.sample;
 
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.rubengees.easyheaderfooteradapter.EasyHeaderFooterAdapter;
-import com.rubengees.easyheaderfooteradaptersample.LayoutManager.LayoutManagerType;
 
 /**
  * The main Activity of the sample.
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private MainAdapter adapter;
     private EasyHeaderFooterAdapter headerFooterAdapter;
 
-    @LayoutManagerType
+    @LayoutManager.LayoutManagerType
     private int layoutManagerType;
 
     private ViewGroup root;
@@ -51,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Used for inflation later on
-        root = (ViewGroup) findViewById(R.id.root);
+        root = findViewById(R.id.root);
 
-        recycler = (RecyclerView) findViewById(R.id.recycler);
+        recycler = findViewById(R.id.recycler);
         adapter = new MainAdapter(savedInstanceState);
         headerFooterAdapter = new EasyHeaderFooterAdapter(adapter);
 
@@ -125,11 +124,11 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.remove_header:
-                headerFooterAdapter.removeHeader();
+                headerFooterAdapter.setHeader(null);
 
                 return true;
             case R.id.remove_footer:
-                headerFooterAdapter.removeFooter();
+                headerFooterAdapter.setFooter(null);
 
                 return true;
             case R.id.linear_layout_manager:

@@ -4,7 +4,7 @@ Add a header and/or footer to your `RecyclerView` - the easy way.
 
 ![Sample](art/sample.gif)
 
-You can download the latest sample app [here](https://github.com/rubengees/easy-header-footer-adapter/releases/download/2.0.0/sample-release.apk).
+You can download the latest sample app [here](https://github.com/rubengees/easy-header-footer-adapter/releases/download/3.0.0/sample-release.apk).
 
 ### Features
 
@@ -28,7 +28,7 @@ And this to your module `build.gradle` (usually in the `app` directory):
 
 ```groovy
 dependencies {
-    compile 'com.github.rubengees:easy-header-footer-adapter:2.0.0@aar'
+    compile 'com.github.rubengees:easy-header-footer-adapter:3.0.0@aar'
 }
 ```
 
@@ -56,11 +56,11 @@ headerFooterAdapter.setHeader(anyView);
 headerFooterAdapter.setFooter(anotherView);
 ```
 
-Those can be removed with the `removeHeader` and `removeFooter` methods:
+Those can be removed by setting null to the aforementioned methods:
 
 ```java
-headerFooterAdapter.removeHeader();
-headerFooterAdapter.removeFooter();
+headerFooterAdapter.setHeader(null);
+headerFooterAdapter.setFooter(null);
 ```
 
 And that's it! Easy right?
@@ -109,7 +109,7 @@ recycler.setAdapter(headerFooterAdapter);
 ### Further reading
 
 The sample features almost all use cases. Have a look [here](sample/src/main/java/com/rubengees/easyheaderfooteradaptersample).  
-You can find the JavaDoc [here](https://jitpack.io/com/github/rubengees/easy-header-footer-adapter/2.0.0/javadoc/).
+You can find the JavaDoc [here](https://jitpack.io/com/github/rubengees/easy-header-footer-adapter/3.0.0/javadoc/).
 
 ### Metrics
 

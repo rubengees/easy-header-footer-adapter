@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/code
+    docker:
+      - image: circleci/android:api-25-alpha
+    environment:
+      _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m"'
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Run Build
+          command: ./gradlew build -PdisablePreDex --console=plain
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - store_artifacts:
+          path: app/build/outputs/apk/debug/app-debug.apk
+          destination: apk/app-debug.apk
+      - store_artifacts:
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          destination: apk/app-release-unsigned.apk
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}

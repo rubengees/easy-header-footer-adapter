@@ -1,3 +1,5 @@
+import org.gradle.internal.jvm.Jvm
+
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
@@ -16,16 +18,34 @@ android {
 }
 
 dependencies {
-    compile deps.supportRecyclerView
-    compile deps.supportAnnotations
+    api deps.supportRecyclerView
+    api deps.supportAnnotations
+}
+
+task androidJavadocs(type: Javadoc, dependsOn: 'assembleRelease') {
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    android.libraryVariants.all { variant ->
+        if (variant.name == 'release') {
+            owner.classpath += variant.javaCompile.classpath
+        }
+    }
+    source = android.sourceSets.main.java.srcDirs
+    exclude '**/R.html', '**/R.*.html', '**/index.html'
 }
 
 task javadoc(type: Javadoc) {
     failOnError false
-    options.memberLevel = JavadocMemberLevel.PUBLIC
+
     source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
+    classpath = files(android.bootClasspath)
+
+    android.libraryVariants.all { variant ->
+        classpath += variant.javaCompiler.classpath
+    }
+
+    options.memberLevel = JavadocMemberLevel.PUBLIC
+    options.links("http://docs.oracle.com/javase/${Jvm.current().javaVersion.majorVersion ?: '7'}/docs/api/")
+    options.linksOffline("http://d.android.com/reference/", "${android.getSdkDirectory()}/docs/reference")
 }
 
 task sourceJar(type: Jar) {

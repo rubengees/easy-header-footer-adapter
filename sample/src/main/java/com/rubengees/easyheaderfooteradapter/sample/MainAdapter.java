@@ -1,4 +1,4 @@
-package com.rubengees.easyheaderfooteradaptersample;
+package com.rubengees.easyheaderfooteradapter.sample;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -113,7 +113,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextViewHolder(View itemView) {
             super(itemView);
 
-            textView = (TextView) itemView.findViewById(R.id.text);
+            textView = itemView.findViewById(R.id.text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
