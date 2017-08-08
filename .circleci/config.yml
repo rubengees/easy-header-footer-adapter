@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "easy-header-footer-adapter/build.gradle" }}-{{ checksum  "sample/build.gradle" }}
       - run:
           name: Run Build
           command: ./gradlew build -PdisablePreDex --console=plain
@@ -26,4 +26,4 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "easy-header-footer-adapter/build.gradle" }}-{{ checksum  "sample/build.gradle" }}

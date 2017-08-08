@@ -159,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         outState.putInt(LAYOUT_MANAGER_TYPE_STATE, layoutManagerType);
-        outState.putBoolean(HEADER_STATE, headerFooterAdapter.hasHeader());
-        outState.putBoolean(FOOTER_STATE, headerFooterAdapter.hasFooter());
+        outState.putBoolean(HEADER_STATE, headerFooterAdapter.getHeader() != null);
+        outState.putBoolean(FOOTER_STATE, headerFooterAdapter.getFooter() != null);
         adapter.saveInstanceState(outState);
     }
 
