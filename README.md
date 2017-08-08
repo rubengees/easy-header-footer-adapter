@@ -1,4 +1,4 @@
-# easy-header-footer-adapter [![Release](https://jitpack.io/v/rubengees/easy-header-footer-adapter.svg)](https://jitpack.io/#rubengees/easy-header-footer-adapter) ![API](https://img.shields.io/badge/API-9%2B-blue.svg) [![CircleCI](https://circleci.com/gh/rubengees/easy-header-footer-adapter.svg?style=shield)](https://circleci.com/gh/rubengees/easy-header-footer-adapter)
+# easy-header-footer-adapter [![Release](https://jitpack.io/v/rubengees/easy-header-footer-adapter.svg)](https://jitpack.io/#rubengees/easy-header-footer-adapter) ![API](https://img.shields.io/badge/API-14%2B-blue.svg) [![CircleCI](https://circleci.com/gh/rubengees/easy-header-footer-adapter.svg?style=shield)](https://circleci.com/gh/rubengees/easy-header-footer-adapter)
 
 Add a header and/or footer to your `RecyclerView` - the easy way.
 
@@ -113,7 +113,7 @@ You can find the JavaDoc [here](https://jitpack.io/com/github/rubengees/easy-hea
 
 ### Metrics
 
-<a href="http://www.methodscount.com/?lib=com.github.rubengees%3AEasyHeaderFooterAdapter%3A%2B"><img src="https://img.shields.io/badge/Methods and size-core: 73 | deps: 9347 | 8 KB-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=com.github.rubengees%3Aeasy-header-footer-adapter%3A3.0.0"><img src="https://img.shields.io/badge/Methods and size-83 | 10 KB-e91e63.svg"/></a>
 
 ### Contributions and contributors
 
