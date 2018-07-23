@@ -63,8 +63,10 @@ public class EasyHeaderFooterAdapter extends RecyclerView.Adapter<RecyclerView.V
             }
 
             public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-                notifyItemRangeChanged(getDelegatedPosition(fromPosition),
-                        getDelegatedPosition(toPosition) + itemCount);
+                // fix bug. Because fromPosition may bigger then toPosition.
+                // For now, itemCount must be 1. So just call notifyItemMoved
+                // 目前 recycleView源码中，itemCount只能是1，因为只能通过adapter.notifyItemMoved触发。
+                notifyItemMoved(getDelegatedPosition(fromPosition), getDelegatedPosition(toPosition));
             }
         });
 
